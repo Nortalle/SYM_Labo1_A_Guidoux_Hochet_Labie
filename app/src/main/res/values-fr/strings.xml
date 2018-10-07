@@ -1,4 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+File         : strings.xml
+Project      : TemplateActivity
+Authors      : Hochet Guillaume 7 octobre 2018
+               Labie Marc 7 octobre 2018
+               Guidoux Vincent 7 octobre 2018
+
+Description  : string in french
+
+ -->
 <resources>
 
     <string name="app_name">SYM Template Activity</string>

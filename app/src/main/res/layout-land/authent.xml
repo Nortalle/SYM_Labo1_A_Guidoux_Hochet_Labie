@@ -1,4 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+File         : authent.xml
+Project      : TemplateActivity
+Authors      : Hochet Guillaume 7 octobre 2018
+               Labie Marc 7 octobre 2018
+               Guidoux Vincent 7 octobre 2018
+
+Description  : RelativeLayout for authentification on landscape screen
+
+ -->
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
