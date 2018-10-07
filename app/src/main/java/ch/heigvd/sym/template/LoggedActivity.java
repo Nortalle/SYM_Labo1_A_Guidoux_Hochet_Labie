@@ -1,29 +1,44 @@
+/*
+ * File         : LoggedActivity.java
+ * Project      : TemplateActivity
+ * Authors      : Hochet Guillaume 7 octobre 2018
+ *                Labie Marc 7 octobre 2018
+ *                Guidoux Vincent 7 octobre 2018
+ *
+ * Description  : Activity when the user logged in display the email of the user, the phone's imei
+ *                and an image
+ *
+ */
+
 package ch.heigvd.sym.template;
 
-import android.Manifest;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.graphics.BitmapFactory;
-import android.os.Build;
-import android.os.Bundle;
-import android.os.Environment;
-import android.support.annotation.NonNull;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.app.ActivityCompat;
+import android.support.annotation.NonNull;
+import android.support.v7.app.AlertDialog;
 import android.telephony.TelephonyManager;
-import android.util.Log;
+import android.content.pm.PackageManager;
+import android.content.DialogInterface;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.os.Environment;
+import android.os.Bundle;
+import android.os.Build;
 import android.widget.Toast;
+import android.Manifest;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * display the email of the user, the phone's imei and an image
+ */
 public class LoggedActivity extends AppCompatActivity {
 
     private static final int ASK_PERMS = 10;
@@ -99,6 +114,9 @@ public class LoggedActivity extends AppCompatActivity {
             verifyPermissions();
     }
 
+    /**
+     *  Verify Permissions, and if there're ganted, Imei or Image will be loaded
+     */
     private void verifyPermissions() {
 
         Log.d("VerifyPermissions", "Entering permissions verification process");
@@ -165,6 +183,9 @@ public class LoggedActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     *  Ask the user permissions to access the phone state and external storage
+     */
     private void askPermissions() {
 
         Log.d("askPermissions", "Entering ask permissions process");
@@ -215,7 +236,9 @@ public class LoggedActivity extends AppCompatActivity {
         super.onDestroy();
     }
 
-
+    /**
+     * Display, if we can, the emei of the current phone
+     */
     private void loadImei() {
 
         Log.d("loadImei", "Checking imei number");
@@ -232,6 +255,9 @@ public class LoggedActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Display the image of the user
+     */
     private void loadImage() {
 
         Log.d("loadImage", "Trying to load" + givenImage);

@@ -1,9 +1,14 @@
 /*
- * File     : MainActivity.java
- * Project  : TemplateActivity
- * Author   : Markus Jaton 2 juillet 2014
- * 			  Fabien Dutoit 28 août 2018
- *            IICT / HEIG-VD
+ * File         : MainActivity.java
+ * Project      : TemplateActivity
+ * Author       : Markus Jaton 2 juillet 2014
+ * 			      Fabien Dutoit 28 août 2018
+ *                IICT / HEIG-VD
+ * Modified by  : Hochet Guillaume 7 octobre 2018
+ *                Labie Marc 7 octobre 2018
+ *                Guidoux Vincent 7 octobre 2018
+ *
+ * Description  : Main activity of the projet TemplateActivity
  *
  * mailto:fabien.dutoit@heig-vd.ch
  *
@@ -25,27 +30,23 @@
  */
 package ch.heigvd.sym.template;
 
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.AlertDialog;
+import android.view.View.OnClickListener;
+import android.view.View;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.Bundle;
-import android.os.Environment;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Button;
 import android.widget.Toast;
-
-import java.io.File;
+import android.os.Bundle;
+import android.util.Log;
 
 import ch.heigvd.sym.util.AuthManager;
-
+/**
+ * Ask the user to enter a mail and a password
+ */
 public class MainActivity extends AppCompatActivity {
-
-    // For logging purposes
-    private static final String TAG = MainActivity.class.getSimpleName();
 
     private AuthManager authManager = new AuthManager();
 
@@ -61,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
         // Show the welcome screen / login authentication dialog
         setContentView(R.layout.authent);
 
+        //Help us know if a sesssion existed before
         Intent intent   = getIntent();
 
         if(intent != null) {
@@ -69,14 +71,12 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(MainActivity.this,"Got imei: " + imei, Toast.LENGTH_LONG).show();
         }
 
-
         // Link to GUI elements
         this.email      = findViewById(R.id.email);
         this.password   = findViewById(R.id.password);
         this.signIn     = findViewById(R.id.buttOk);
 
-        this.email.setText("guillaume.hochet@heig-vd.ch");
-        this.password.setText("yolo");
+        this.email.setText("fabien.dutoit@heig-vd.ch");
 
         // Then program action associated to "Ok" button
         signIn.setOnClickListener(new OnClickListener(){
@@ -100,9 +100,13 @@ public class MainActivity extends AppCompatActivity {
 
                     Toast.makeText(MainActivity.this, getResources().getString(R.string.good), Toast.LENGTH_LONG).show();
 
+                    //We create a new activity
                     Intent intent = new Intent(MainActivity.this, LoggedActivity.class);
+
+                    //pass some data to the new activity
                     intent.putExtra("given_email", mail);
                     intent.putExtra("given_image", authManager.getAccount(mail).getImage());
+
                     startActivity(intent);
 
                     finish();
@@ -151,6 +155,12 @@ public class MainActivity extends AppCompatActivity {
         super.onDestroy();
     }
 
+    /**
+     * Show an Authentification Error Dialog
+     *
+     * @param mail  : email in the incorrent login
+     * @param passwd: password in the incorrent login
+     */
     protected void showErrorDialog(String mail, String passwd) {
 
         AlertDialog.Builder alertbd = new AlertDialog.Builder(this);
@@ -165,5 +175,4 @@ public class MainActivity extends AppCompatActivity {
         });
         alertbd.create().show();
     }
-
 }
