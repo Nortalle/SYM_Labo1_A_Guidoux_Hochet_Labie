@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">SYM Template Activity</string>
+    <string name="email">E-mail</string>
+    <string name="psw">Mot de passe</string>
+    <string name="signin">Connexion</string>
+    <string name="wronglogin">Connexion échouée</string>
+    <string name="wrong">Email ou mot de passe éronné</string>
+    <string name="good">Connexion réussie!</string>
+    <string name="empty">Email vide</string>
+    <string name="unknown">Adresse email inconnue</string>
+    <string name="invalid">Adresse email invalide</string>
+    <string name="title_activity_logged">LoggedActivity</string>
+    <string name="missing_permissions">Autorisations manquantes</string>
+    <string name="missing_permissions_text">Cette application nécessite des autorisations pour fonctionner</string>
+    <string name="not_granted_imei">Aucun accès au numéro IMEI</string>
+    <string name="not_granted_storage">Aucun accès au stockage externe</string>
+    <string name="no_allow_permissions">Pas cool</string>
+    <string name="no_allow_permissions_text">On a vraiment besoin de ces autorisations pour la recherche</string>
+    <string name="logout">Déconnexion</string>
+
+</resources>
