@@ -14,6 +14,12 @@ On doit tout d’abord placer l’image que l’on veut afficher dans le dossier
 
 On peut constater que l’application se ferme. Dans Android, il y a une **stack d’activité** que le système remonte lorsque l’on appuie sur le bouton back par défaut. Cette stack se remplit au fur et à mesure que de nouvelles activités sont créées dans l’application. Dans le code, quand on passait du Login à l’autre fenêtre, on appelait `finish()` sur l’activité Login ce qui la retirait de la stack. N’y restait alors que l’activité d’arrivée, donc quand on clique sur back, il n’y a rien à remonter donc l’application se fermait. Pour corriger ça, nous avons opté pour redéfinir l’action de back, en affichant un toast disant qu’on se déconnecte et en renvoyant l’utilisateur vers le Login à l’aide d’un intent. Cette fois-ci, si l’utilisateur reclique sur back, l’app se ferme car on avait bien au préalable appelé `finish()` sur l’activité précédente.
 
+
+
+
+
+
+
 #### Question 4 - On pourrait imaginer une situation où cette seconde Activity fournit un résultat (par exemple l’IMEI ou une autre chaîne de caractères) que nous voudrions récupérer dans l'Activity de départ. Comment procéder ?
 
 Il suffit de repasser des paramètres dans l’**intent** qui renvoie l’utilisateur vers le login avec `intent.putExtra() `puis la récupérer à l’aide de `intent.getStringExtra()` en testant bien que l’intent ne soit pas null.
@@ -36,6 +42,18 @@ Voir le nouveau fichier de layout dans `/res/layout-land/authent.xml`. Chaque ac
 #### Question 7 - Le layout de l’interface utilisateur de l’activité de login qui vous a été fourni a été réalisé avec un LinearLayout à la racine. Nous vous demandons de réaliser un layout  équivalent utilisant cette fois-ci un RelativeLayout.
 
 Voir le fichier de layout dans `/res/layout/authent.xml`. Le **RelativeLayout** place les éléments relativement aux autres. Nous plaçons donc le premier input en haut de l’écran, le second en-dessous du premier et le bouton en-dessous du deuxième input.
+
+
+
+
+
+
+
+
+
+
+
+
 
 #### Question 8 - Implémenter dans votre code les méthodes onCreate(), onStart(), onResume(), onPause(), onStop(), etc... qui marquent le cycle de vie d'une application Android, et tracez leur exécution dans le logcat. Décrivez brièvement à quelles occasions ces méthodes sont invoquées. Si vous aviez (par exemple) une connexion Bluetooth (ou des connexions bases de données, ou des capteurs activés) ouverte dans votre Activity, que faudrait-il peut-être faire, à votre avis (nous ne vous demandons pas de code ici) ?
 
